@@ -97,6 +97,11 @@ class CustomButtonWithProgress : View {
                     R.styleable.CustomButtonWithProgress_src_center_padding,
                     0f
                 )
+
+                totalStep = obtainStyledAttributes.getFloat(
+                    R.styleable.CustomButtonWithProgress_total_step,
+                    3f
+                )
             } finally {
                 obtainStyledAttributes.recycle()
             }

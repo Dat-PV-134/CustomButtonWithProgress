@@ -16,6 +16,7 @@
         app:start_color_track="#fecdd3"
         app:end_color_track="#fecdd3"
         app:src_center="@drawable/ic_next"
+        app:total_step="5"
         app:src_center_padding="6dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"

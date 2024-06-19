@@ -7,5 +7,6 @@
         <attr name="end_color_track" format="color" />
         <attr name="src_center" format="reference"/>
         <attr name="src_center_padding" format="dimension"/>
+        <attr name="total_step" format="float"/>
     </declare-styleable>
 </resources>
