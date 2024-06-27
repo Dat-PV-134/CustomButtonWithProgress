@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.rekoj134.custombuttonwithprogress.CustomButtonWithProgress
+    <com.rekoj134.circlebuttonwithprogress.CustomButtonWithProgress
         android:id="@+id/customButtonWithProgress"
         android:layout_width="80dp"
         android:layout_height="80dp"

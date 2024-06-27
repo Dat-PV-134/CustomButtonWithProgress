@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "CustomButtonWithProgress"
 include(":app")
- 
+include(":CircleButtonWithProgress")

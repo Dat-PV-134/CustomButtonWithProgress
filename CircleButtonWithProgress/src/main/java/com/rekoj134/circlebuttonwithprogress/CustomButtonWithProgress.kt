@@ -1,4 +1,4 @@
-package com.rekoj134.custombuttonwithprogress
+package com.rekoj134.circlebuttonwithprogress
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -202,16 +202,9 @@ class CustomButtonWithProgress : View {
         canvas.drawPath(pathProgress, paint)
 
         if (isPressing) {
+            radiusRipple = width / 2f - width * 0.18f
             canvas.drawCircle(width / 2f, height / 2f, radiusRipple, ripplePaint)
-
-            if (radiusRipple <= width / 2f - width * 0.18f) {
-                radiusRipple += width * 0.1f
-                invalidate()
-            } else {
-                radiusRipple = 0f
-                isPressing = false
-                invalidate()
-            }
+            isPressing = false
         }
 
         if (isGoPrevious) {
@@ -241,13 +234,6 @@ class CustomButtonWithProgress : View {
         if (isPressing) return true
 
         event?.let {
-            // get pointer index from the event object
-//            val pointerIndex = event.actionIndex
-
-            // get pointer ID
-//            val pointerId = event.getPointerId(pointerIndex)
-
-            // get masked (not specific to a pointer) action
             val maskedAction = event.actionMasked
 
             when (maskedAction) {
@@ -259,11 +245,11 @@ class CustomButtonWithProgress : View {
                 }
 
                 MotionEvent.ACTION_MOVE -> {
-
+                    isPressing = true
                 }
 
                 MotionEvent.ACTION_UP, MotionEvent.ACTION_POINTER_UP, MotionEvent.ACTION_CANCEL -> {
-
+                    isPressing = false
                 }
             }
 
@@ -285,5 +271,11 @@ class CustomButtonWithProgress : View {
             isGoPrevious = true
             invalidate()
         }
+    }
+
+    fun setCurrentStep(currentStep: Float) {
+        tempCurrentStep = currentStep
+        if (this.currentStep > currentStep) isGoPrevious = true
+        invalidate()
     }
 }
