@@ -116,10 +116,10 @@ class CustomButtonWithProgress : View {
     private fun drawView(canvas: Canvas) {
         paint.setShader(
             LinearGradient(
-                0f + width * 0.18f,
-                0f + height * 0.18f,
-                width.toFloat() - width * 0.18f,
-                height.toFloat() - height * 0.18f,
+                0f + width * 0.16f,
+                0f + height * 0.16f,
+                width.toFloat() - width * 0.16f,
+                height.toFloat() - height * 0.16f,
                 intArrayOf(
                     startColorProgress,
                     endColorProgress
@@ -130,7 +130,7 @@ class CustomButtonWithProgress : View {
         )
 
         paint.style = Paint.Style.FILL
-        canvas.drawCircle(width/2f, height/2f, (width - width * 0.38f)/2, paint)
+        canvas.drawCircle(width / 2f, height / 2f, (width - width * 0.32f) / 2, paint)
 
         paint.style = Paint.Style.STROKE
         centerImageDrawable?.setBounds(
@@ -167,7 +167,7 @@ class CustomButtonWithProgress : View {
             )
         )
 
-        paint.strokeWidth = width * 0.1f / 3
+        paint.strokeWidth = width * 0.1f / 2
 
         canvas.drawPath(pathTrack, paint)
 
@@ -204,7 +204,6 @@ class CustomButtonWithProgress : View {
         if (isPressing) {
             radiusRipple = width / 2f - width * 0.18f
             canvas.drawCircle(width / 2f, height / 2f, radiusRipple, ripplePaint)
-            isPressing = false
         }
 
         if (isGoPrevious) {
@@ -231,7 +230,7 @@ class CustomButtonWithProgress : View {
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-        if (isPressing) return true
+        if (isPressing) return super.onTouchEvent(event)
 
         event?.let {
             val maskedAction = event.actionMasked
@@ -255,7 +254,7 @@ class CustomButtonWithProgress : View {
 
             invalidate()
         }
-        return true
+        return super.onTouchEvent(event)
     }
 
     fun nextStep() {
