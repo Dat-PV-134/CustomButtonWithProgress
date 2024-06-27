@@ -202,8 +202,16 @@ class CustomButtonWithProgress : View {
         canvas.drawPath(pathProgress, paint)
 
         if (isPressing) {
-            radiusRipple = width / 2f - width * 0.18f
             canvas.drawCircle(width / 2f, height / 2f, radiusRipple, ripplePaint)
+
+            if (radiusRipple <= width / 2f - width * 0.18f) {
+                radiusRipple += width * 0.1f
+                invalidate()
+            } else {
+                radiusRipple = 0f
+                isPressing = false
+                invalidate()
+            }
         }
 
         if (isGoPrevious) {
@@ -244,11 +252,11 @@ class CustomButtonWithProgress : View {
                 }
 
                 MotionEvent.ACTION_MOVE -> {
-                    isPressing = true
+
                 }
 
                 MotionEvent.ACTION_UP, MotionEvent.ACTION_POINTER_UP, MotionEvent.ACTION_CANCEL -> {
-                    isPressing = false
+
                 }
             }
 
@@ -278,3 +286,4 @@ class CustomButtonWithProgress : View {
         invalidate()
     }
 }
+
