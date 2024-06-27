@@ -19,7 +19,7 @@ dependencyResolutionManagement {
 Build.gradle (Module app):
 
 ```sh
-  implementation("com.github.Dat-PV-134:CustomButtonWithProgress:1.0.2")
+  implementation("com.github.Dat-PV-134:CustomButtonWithProgress:1.0.3")
 ```
 
 ## Usage:
